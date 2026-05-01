@@ -24,3 +24,25 @@ undergrad_survey <- filter(undergrad_survey, Finished!="False" & Q1!= "No")
 undergrad_survey <- undergrad_survey[-c(1,2), ] 
 
 
+################ VARIABLE RECODING ###########################
+
+library(tidyverse)
+
+## Mutating observations "YES" and "NO" as 1 and 0
+## Yes will now = 1 and No will = 0
+
+# ***********************************************************************************
+# the code below was written with the help of AI (ChatGPT)
+
+# It runs the condition of if a cell contains "Yes" then it will be 
+# changed to 1, if it is not "Yes" then the cell will be changed to 0 (NA is left unchanged)
+# this condition is ONLY applied on columns where the WHOLE column contains ONLY observations "Yes", "No" or NA
+
+
+undergrad_survey <- undergrad_survey %>%
+  mutate(across(where(~ all(. %in% c("Yes", "No", NA))),
+                ~ if_else(. == "Yes", 1, 0)))
+# ***********************************************************************************
+
+
+
