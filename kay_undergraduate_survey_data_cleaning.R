@@ -138,7 +138,7 @@ lookup <- setNames(frequency_codes$order_id, frequency_codes$frequency)
 #For each value in each column:
 
 #R will: take the string, use the string as a key in my "key" df, and then replace 
-# the value in the df with the value assigned to that string across Q8_1-Q8_5, and Q16
+# the value in the df with the value assigned to that string across Q8_1-Q8_5
 
 undergrad_survey <- undergrad_survey %>%
   mutate(across(c(Q8_1, Q8_2, Q8_3, Q8_4, Q8_5),
