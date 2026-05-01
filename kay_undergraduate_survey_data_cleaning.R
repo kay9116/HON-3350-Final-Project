@@ -45,4 +45,21 @@ undergrad_survey <- undergrad_survey %>%
 # ***********************************************************************************
 
 
+## Mutating Q2 (what year are you?)
+
+
+# mutating "1 / 1st year" and so forth into simply 1,2,3,....
+
+(undergrad_survey <- undergrad_survey %>%
+    mutate(Q2 = case_when(
+      
+      Q2==  "1 / 1st year" ~ 1,
+      
+      Q2==   "2 / 2nd year" ~ 2,
+      
+      Q2==  "3 / 3rd year" ~ 3,
+      
+      Q2==   "4+ / 4th year and beyond" ~ 4
+    )))
+
 
