@@ -3,7 +3,7 @@
 library(readr)
 
 Undergraduate_Student_Life_Survey_April_23_2026 <- read_csv("Undergraduate_Student_Life_Survey_April 23-2026.csv")
-View(Undergraduate_Student_Life_Survey_April_23_2026)
+
 undergrad_survey <- Undergraduate_Student_Life_Survey_April_23_2026
 
 ############ SUBSUBSETTING #########################
@@ -62,4 +62,38 @@ undergrad_survey <- undergrad_survey %>%
       Q2==   "4+ / 4th year and beyond" ~ 4
     )))
 
+
+## Q3 (what is your major)
+
+
+# observations will be assigned to a numerical value 1,2,3,4... based on how they appeared 
+#to the respondants in the survey (e.g. Architecture = 1, Art=2, etc)
+
+
+
+
+#data frame containing all majors in the order they appear in the survey
+
+majors_order <- data.frame(majors= c("Architecture", "Art, Music, Dance, Theater","Buisness","Education",
+                                     "Engineering", "Liberal Arts and Social Sciences","Natural Sciences and Mathematics"
+                                     ,"Nursing", "Public Policy", "Integrated Studies"))
+
+
+# **********************************************************************************
+#this code was written with help from AI (ChatGPT)
+
+
+
+#assigns an id to each of the majors in the df
+majors_order$order_id <- seq_len(nrow(majors_order))
+
+
+#creates a new column containing numeric id's for the majors based on
+# the df majors_order and adds it right next to the current column
+
+
+undergrad_survey <- undergrad_survey %>%
+  left_join(majors_order, by = c("Q3" = "majors")) %>%
+  mutate(`Q3 ID` = order_id, .after = Q3) %>%
+  select(-order_id)
 
