@@ -9,7 +9,7 @@ undergrad_survey <- Undergraduate_Student_Life_Survey_April_23_2026
 ############ SUBSUBSETTING #########################
 
 
-# Selecting needed variables "Finished" and responses for Q1 - Q16
+# Selecting needed variables "Finished", Response ID, and responses for Q1 - Q16
 undergrad_survey <- undergrad_survey[c(6,8,11:30)]
 
 # Deleting rows from people whose "Finished" = False AND where Q1 (undergraduate 
