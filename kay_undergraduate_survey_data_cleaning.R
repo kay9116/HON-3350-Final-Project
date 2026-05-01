@@ -97,3 +97,51 @@ undergrad_survey <- undergrad_survey %>%
   mutate(`Q3 ID` = order_id, .after = Q3) %>%
   select(-order_id)
 
+
+# Re-coding the Matrix (Q8)
+
+#Order for the coding of frequencies in matrix
+
+frequency_codes <- data.frame(frequency= c("Basically every day",
+                                           "A few times a week",
+                                           "A few times a month",
+                                           "Once a month",
+                                           "Less than once a month",
+                                           "Once",
+                                           "Not at all"))
+
+
+#assigns numbers 0-6 to frequencies (1 for "not at all" and 7 for "basically everyday")
+
+frequency_codes$order_id <- rev(seq_len(nrow(frequency_codes)))
+
+library(stringr)
+
+# the function below cleans the observations' format and ensures there are no 
+# weird spaces and is treated as plain text (that is the purpose of the (as.character(.)) function )
+
+undergrad_survey <- undergrad_survey %>%
+  mutate(across(c(Q8_1, Q8_2, Q8_3, Q8_4, Q8_5),
+                ~ str_squish(as.character(.))))
+
+# does the same as above to the frequency codes df to ensure the formatting is exactly the same and will not produce 
+# "NA"s at the last step
+
+frequency_codes <- frequency_codes %>%
+  mutate(frequency = str_squish(as.character(frequency)))
+
+# turns my frequency_codes table into a named vector (a lookup dictionary)
+# setNames makes R use the text as the key, and the number as the value
+
+lookup <- setNames(frequency_codes$order_id, frequency_codes$frequency)
+
+#For each value in each column:
+
+#R will: take the string, use the string as a key in my "key" df, and then replace 
+# the value in the df with the value assigned to that string across Q8_1-Q8_5, and Q16
+
+undergrad_survey <- undergrad_survey %>%
+  mutate(across(c(Q8_1, Q8_2, Q8_3, Q8_4, Q8_5),
+                ~ lookup[.]))
+
+
