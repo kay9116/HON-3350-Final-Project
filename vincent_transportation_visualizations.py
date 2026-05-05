@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import numpy as np
 
 df = pd.read_csv("cleaned_transportation_survey.csv")
@@ -30,32 +29,25 @@ q9  = df["Q9"].dropna()
 on  = int((q9 == 1).sum())
 off = int((q9 == 0).sum())
 
-fig, ax = plt.subplots(figsize=(6, 7))
+labels = ["On-Campus", "Off-Campus"]
+counts = [on, off]
+
+fig, ax = plt.subplots(figsize=(6, 5))
 fig.subplots_adjust(bottom=0.18)
 
-wedges, texts, autotexts = ax.pie(
-    [on, off],
-    labels=None,
-    autopct="%1.0f%%",
-    startangle=90,
-    colors=[SCARLET, GRAY],
-    wedgeprops={"width": 0.5, "edgecolor": "white", "linewidth": 2},
-    pctdistance=0.75,
-)
-for at in autotexts:
-    at.set_fontsize(14)
-    at.set_fontweight("bold")
-    at.set_color("white")
+bars = ax.bar(labels, counts,
+              color=[SCARLET, GRAY],
+              width=0.5, edgecolor="white")
 
+for bar, val in zip(bars, counts):
+    ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.3,
+            str(val), ha="center", va="bottom", fontsize=13, fontweight="bold", color=DARK)
+
+ax.set_ylabel("Number of Students", fontsize=11, color=GRAY)
+ax.set_ylim(0, max(counts) + 3)
+ax.tick_params(axis="x", labelsize=13)
 ax.set_title("Where Do UH Students Live?",
-             fontsize=16, fontweight="bold", pad=20, color=DARK)
-
-legend = [
-    mpatches.Patch(color=SCARLET, label=f"On-Campus  (n={on})"),
-    mpatches.Patch(color=GRAY,    label=f"Off-Campus  (n={off})"),
-]
-ax.legend(handles=legend, loc="lower center", bbox_to_anchor=(0.5, -0.08),
-          frameon=False, fontsize=12)
+             fontsize=16, fontweight="bold", pad=14, color=DARK)
 
 fig.text(0.5, 0.04, f"n = {on + off}  |  {SOURCE}",
          ha="center", fontsize=9, color=GRAY, style="italic")
@@ -173,4 +165,48 @@ plt.close()
 print("Saved chart4_commute_by_mode.png")
 
 
-print("\nAll 4 charts saved.")
+# ── Chart 5: Average Commute Time by Vehicle Ownership (Q13 vs Q11) ───────────
+# Off-campus students only. Does owning a car mean a shorter commute?
+
+commute_by_vehicle = (
+    df.dropna(subset=["Q13", "Q11"])
+    .groupby("Q13")["Q11"]
+    .agg(["mean", "count"])
+    .rename(columns={"mean": "avg_commute", "count": "n"})
+)
+
+# Q13: 1 = owns vehicle, 0 = does not own vehicle
+commute_by_vehicle.index = commute_by_vehicle.index.map({1: "Owns a Vehicle", 0: "No Vehicle"})
+
+fig, ax = plt.subplots(figsize=(6, 5))
+fig.subplots_adjust(bottom=0.18)
+
+bars = ax.bar(
+    commute_by_vehicle.index,
+    commute_by_vehicle["avg_commute"],
+    color=[SCARLET, GRAY],
+    width=0.5, edgecolor="white"
+)
+
+for bar, (idx, row) in zip(bars, commute_by_vehicle.iterrows()):
+    ax.text(bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 1,
+            f"{row['avg_commute']:.0f} min\n(n={int(row['n'])})",
+            ha="center", va="bottom", fontsize=12, fontweight="bold", color=DARK)
+
+ax.set_ylabel("Average Daily Commute (minutes)", fontsize=11, color=GRAY)
+ax.set_ylim(0, commute_by_vehicle["avg_commute"].max() + 20)
+ax.tick_params(axis="x", labelsize=13)
+ax.set_title("Does Owning a Car Mean a Shorter Commute?",
+             fontsize=14, fontweight="bold", pad=14, color=DARK)
+
+fig.text(0.5, 0.04,
+         f"Off-campus respondents only  |  {SOURCE}",
+         ha="center", fontsize=9, color=GRAY, style="italic")
+
+plt.savefig("chart5_commute_by_vehicle.png", bbox_inches="tight")
+plt.close()
+print("Saved chart5_commute_by_vehicle.png")
+
+
+print("\nAll 5 charts saved.")
