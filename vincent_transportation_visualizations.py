@@ -7,7 +7,7 @@ df = pd.read_csv("cleaned_transportation_survey.csv")
 
 # ── Shared style ──────────────────────────────────────────────────────────────
 
-SCARLET  = "#C8102E"
+SCARLET  = "#CC0000"
 GRAY     = "#6B6B6B"
 LIGHT    = "#F2F2F2"
 DARK     = "#1C1C1C"
@@ -30,19 +30,19 @@ q9 = df["Q9"].dropna()
 on  = int((q9 == 1).sum())
 off = int((q9 == 0).sum())
 
-fig, ax = plt.subplots(figsize=(6, 6))
+fig, ax = plt.subplots(figsize=(6, 6.5))
 
 wedges, texts, autotexts = ax.pie(
     [on, off],
-    labels=["On-Campus", "Off-Campus"],
+    labels=None,
     autopct="%1.0f%%",
     startangle=90,
     colors=[SCARLET, GRAY],
     wedgeprops={"width": 0.5, "edgecolor": "white", "linewidth": 2},
-    textprops={"fontsize": 13},
+    pctdistance=0.75,
 )
 for at in autotexts:
-    at.set_fontsize(13)
+    at.set_fontsize(14)
     at.set_fontweight("bold")
     at.set_color("white")
 
@@ -50,18 +50,19 @@ ax.set_title(
     "Where Do UH Students Live?",
     fontsize=16, fontweight="bold", pad=20, color=DARK
 )
-ax.text(
-    0, -0.62,
-    f"n = {on + off}  |  Nearly half of respondents commute from off-campus",
-    ha="center", fontsize=10, color=GRAY, style="italic"
-)
 
 legend = [
     mpatches.Patch(color=SCARLET, label=f"On-Campus  (n={on})"),
     mpatches.Patch(color=GRAY,    label=f"Off-Campus  (n={off})"),
 ]
-ax.legend(handles=legend, loc="lower center", bbox_to_anchor=(0.5, -0.08),
-          frameon=False, fontsize=11)
+ax.legend(handles=legend, loc="lower center", bbox_to_anchor=(0.5, -0.12),
+          frameon=False, fontsize=12)
+
+fig.text(
+    0.5, 0.01,
+    f"n = {on + off}  |  Source: UH Undergraduate Student Life Survey, Spring 2026",
+    ha="center", fontsize=9, color=GRAY, style="italic"
+)
 
 plt.tight_layout()
 plt.savefig("chart1_residence.png", bbox_inches="tight")
