@@ -5,7 +5,7 @@
 
 import pandas as pd
 
-df = pd.read_csv("Undergraduate_Student_Life_Survey_April 23-2026.csv")
+df = pd.read_csv("../data/raw/Undergraduate_Student_Life_Survey_April 23-2026.csv")
 
 df = df[["Finished", "ResponseId", "Q1", "Q2", "Q3", "Q4", "Q5",
          "Q6", "Q7", "Q15", "Q8_1", "Q8_2", "Q8_3", "Q8_4", "Q8_5",
@@ -74,6 +74,6 @@ df["Q16"] = df["Q16"].str.strip().map(frequency_lookup)
 
 
 
-df.to_csv("cleaned_transportation_survey.csv", index=False)
+df.to_csv("../data/cleaned/cleaned_transportation_survey.csv", index=False)
 
 print("Done. cleaned_transportation_survey.csv has been saved.")

@@ -9,7 +9,7 @@ import matplotlib.ticker as ticker
 import numpy as np
 from collections import Counter
 
-df = pd.read_csv("cleaned_transportation_survey.csv")
+df = pd.read_csv("../data/cleaned/cleaned_transportation_survey.csv")
 
 # ── Portrait theme ────────────────────────────────────────────────────────────
 
@@ -49,9 +49,9 @@ SOURCE = "Source: UH Undergraduate Student Life Survey, Spring 2026"
 
 
 def save(name):
-    plt.savefig(name, bbox_inches="tight", facecolor=BG)
+    plt.savefig(f"../charts/{name}", bbox_inches="tight", facecolor=BG)
     plt.close()
-    print(f"Saved {name}")
+    print(f"Saved charts/{name}")
 
 
 # ── Chart 1: Residence ────────────────────────────────────────────────────────
