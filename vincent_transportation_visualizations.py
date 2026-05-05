@@ -149,11 +149,17 @@ fig.subplots_adjust(left=0.06, right=0.96, top=0.82, bottom=0.24)
 ax.scatter(xs, ys, s=280, color=SCARLET, alpha=0.92,
            edgecolors=BG, linewidths=0.8, zorder=2)
 
-mean_val = q11_off.mean()
-ax.axvline(mean_val, color=GOLD, linewidth=1.5, linestyle="--", zorder=1)
-ax.text(mean_val + 3, ax.get_ylim()[1] if len(ys) == 0 else max(ys) + 0.6,
-        f"avg: {mean_val:.0f} min",
-        fontsize=9, color=GOLD, va="bottom")
+mean_val   = q11_off.mean()
+median_val = q11_off.median()
+top        = max(ys) + 0.6
+
+ax.axvline(median_val, color=GOLD,  linewidth=1.8, linestyle="-",  zorder=1)
+ax.axvline(mean_val,   color=SOFT,  linewidth=1.2, linestyle="--", zorder=1)
+
+ax.text(median_val + 3, top, f"median: {median_val:.0f} min",
+        fontsize=9, color=GOLD, va="bottom", fontweight="bold")
+ax.text(mean_val  + 3, top - 0.5, f"mean: {mean_val:.0f} min",
+        fontsize=9, color=SOFT, va="bottom")
 
 ax.set_xlabel("Total Daily Commute (minutes)", fontsize=10, color=SOFT, labelpad=10)
 ax.set_xlim(-10, 260)
