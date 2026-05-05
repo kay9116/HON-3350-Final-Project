@@ -5,9 +5,13 @@ import pandas as pd
 df = pd.read_csv("Undergraduate_Student_Life_Survey_April 23-2026.csv")
 
 # SUBSETTING
-# Keeping Finished, ResponseId, Q1 (for filtering), and transportation columns Q9-Q16
+# Keeping all columns from Finished through Q16 (same selection as Kaylee's script)
+# Transportation columns (Q9-Q16) will be recoded below; civic engagement columns
+# (Q2-Q8) are left as-is for Kaylee's script to handle
 
-df = df[["Finished", "ResponseId", "Q1", "Q9", "Q10", "Q10_7_TEXT", "Q11", "Q12", "Q13", "Q16"]]
+df = df[["Finished", "ResponseId", "Q1", "Q2", "Q3", "Q4", "Q5",
+         "Q6", "Q7", "Q15", "Q8_1", "Q8_2", "Q8_3", "Q8_4", "Q8_5",
+         "Q9", "Q10", "Q10_7_TEXT", "Q11", "Q12", "Q13", "Q16"]]
 
 # Deleting rows 0 and 1 (question text and import metadata — not actual responses)
 
@@ -18,7 +22,7 @@ df = df.drop(index=[0, 1]).reset_index(drop=True)
 df = df[(df["Finished"] != "False") & (df["Q1"] != "No")].reset_index(drop=True)
 
 
-# VARIABLE RECODING
+# VARIABLE RECODING (transportation columns only)
 
 ## Q9 (on-campus vs off-campus residence): On-campus = 1, Off-Campus = 0
 
