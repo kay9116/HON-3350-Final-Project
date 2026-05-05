@@ -145,3 +145,43 @@ undergrad_survey <- undergrad_survey %>%
                 ~ lookup[.]))
 
 
+# Q5 (why didnt you vote on campus during the March Primaries) i will create a new df 
+# that contains these answers due to the fact that there are multiple values 
+# in each cell
+
+
+#creates a data frame that assigns a number to each reason that people chose
+# best aligned with why they didnt vote on campus
+didnt_vote_codes <- data.frame(reason=c(
+  "I chose not to vote",
+  "I voted at a another polling location",
+  "I did not know the election was taking place",
+  "I could not get transportation to the polling place",
+  "The line was too long",
+  "I did not commute to campus that day",
+  "I voted during Early Voting",
+  "I do not feel strongly for politics/ voting",
+  "The line was too long",
+  "I did not commute to campus that day",
+  "I voted during Early Voting",
+  "I do not feel strongly for politics/ voting"
+))
+
+
+#assigns an id to each of the reasons in the df
+didnt_vote_codes$reason_id <- (seq_len(nrow(didnt_vote_codes)))
+
+
+data.frame(Q3_didnt_vote_reason_df) <-  undergrad_survey %>%
+  separate_rows(Q3, sep = ", ")
+
+
+
+
+
+
+
+
+
+
+
