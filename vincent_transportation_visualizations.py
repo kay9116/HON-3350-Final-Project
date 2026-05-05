@@ -168,6 +168,8 @@ print("Saved chart4_commute_by_mode.png")
 # ── Chart 5: Average Commute Time by Vehicle Ownership (Q13 vs Q11) ───────────
 # Off-campus students only. Does owning a car mean a shorter commute?
 
+df["Q13"] = pd.to_numeric(df["Q13"], errors="coerce")
+
 commute_by_vehicle = (
     df.dropna(subset=["Q13", "Q11"])
     .groupby("Q13")["Q11"]
