@@ -205,22 +205,19 @@ colors = [SCARLET if v == commute_by_mode["avg_commute"].max()
 
 ax.hlines(list(ys), 0, commute_by_mode["avg_commute"],
           color=["#333333"] * len(ys), linewidth=1.5, zorder=1)
-ax.scatter(commute_by_mode["avg_commute"], list(ys),
-           color=colors, s=180, zorder=2)
 
-# custom y-axis labels: emoji + mode name
+# emoji at end of line instead of dot; mode name as plain left label
 ax.set_yticks(list(ys))
-ax.set_yticklabels([""] * len(ys))
+ax.set_yticklabels(commute_by_mode.index, fontsize=11, color=WHITE)
 
-for i, mode in enumerate(commute_by_mode.index):
-    emoji = EMOJI_MAP.get(mode, "")
-    ax.text(-4, i, emoji, ha="right", va="center",
-            fontsize=18, fontfamily=EMOJI_FONT)
-    ax.text(-8, i, mode, ha="right", va="center",
-            fontsize=11, color=WHITE)
-
-for i, (col, (idx, row)) in enumerate(zip(colors, commute_by_mode.iterrows())):
-    ax.text(row["avg_commute"] + 8, i,
+for i, (idx, row) in enumerate(commute_by_mode.iterrows()):
+    emoji = EMOJI_MAP.get(idx, "●")
+    col   = SCARLET if row["avg_commute"] == commute_by_mode["avg_commute"].max() else SOFT
+    # emoji at tip of line
+    ax.text(row["avg_commute"], i, emoji,
+            ha="center", va="center", fontsize=22, fontfamily=EMOJI_FONT, zorder=2)
+    # value label after emoji
+    ax.text(row["avg_commute"] + 10, i,
             f"{row['avg_commute']:.0f} min  (n={int(row['n'])})",
             va="center", fontsize=10, color=col, fontweight="bold")
 
