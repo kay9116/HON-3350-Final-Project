@@ -201,3 +201,12 @@ read_csv("Q5_reason_didnt_vote_df")
 
 
 
+
+################ Creating Clean CSV ##################################################3
+
+# writing the newly cleaned dataset to another CSV file
+# my visualizations and analysis will be done using this csv and Q5_didnt_vote_df.csv
+
+
+write_csv(undergrad_survey, "cleaned_undergraduate_survey.csv")
+
