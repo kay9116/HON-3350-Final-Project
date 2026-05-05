@@ -172,15 +172,31 @@ didnt_vote_codes <- data.frame(reason=c(
 didnt_vote_codes$reason_id <- (seq_len(nrow(didnt_vote_codes)))
 
 
-data.frame(Q3_didnt_vote_reason_df) <-  undergrad_survey %>%
-  separate_rows(Q3, sep = ", ")
+#creating a data frame for Q5 that separates all the "multiples" in the cells
+# (1 reason per cell) (response ID is tied to each reason for continuity)
+
+
+Q5_didnt_vote_reason_df <- undergrad_survey |>
+  filter(!is.na(Q5)) |>
+  select(ResponseId, Q5) |>
+  separate_rows(Q5, sep = ",")
+
+# adds the reason_id as a column in the dataframe for ease of analysis
+
+Q5_didnt_vote_reason_df <- Q5_didnt_vote_reason_df %>%
+  left_join(didnt_vote_codes, by = c("Q5" = "reason")) %>%
+  mutate(`Q5 ID` = reason_id, .after = Q5) %>%
+  select(-reason_id)
 
 
 
+# writes the dataframe to a CSV file
 
+library(readr)
 
+write_csv(Q5_didnt_vote_reason_df, "Q5_reason_didnt_vote_df")
 
-
+read_csv("Q5_reason_didnt_vote_df") 
 
 
 
