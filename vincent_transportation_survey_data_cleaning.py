@@ -1,4 +1,7 @@
-##This file was written by Vincent Wren with no AI assistance
+# Author: Vincent Wren
+# All analytical decisions, variable selections, and coding logic were conceived by myself.
+# Claude AI (Anthropic) was used as a technical assistant to help implement and debug the code.
+# No ideation, interpretation, or analytical judgment was performed by AI.
 
 import pandas as pd
 

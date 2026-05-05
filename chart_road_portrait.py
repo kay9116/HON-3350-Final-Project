@@ -1,3 +1,8 @@
+# Author: Vincent Wren
+# All chart concepts, design choices, and analytical decisions were conceived by myself.
+# Claude AI (Anthropic) was used as a technical assistant to help implement and debug the code.
+# No ideation, interpretation, or analytical judgment was performed by AI.
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
