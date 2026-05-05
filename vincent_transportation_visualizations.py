@@ -105,12 +105,12 @@ ax.scatter(mode_counts.values, list(ys),
            color=colors, s=180, zorder=2)
 
 for i, (val, col) in enumerate(zip(mode_counts.values, colors)):
-    ax.text(val + 0.2, i, str(val),
+    ax.text(val + 0.8, i, str(val),
             va="center", fontsize=11, color=col, fontweight="bold")
 
 ax.set_yticks(list(ys))
 ax.set_yticklabels(mode_counts.index, fontsize=12, color=WHITE)
-ax.set_xlim(0, mode_counts.max() + 2)
+ax.set_xlim(0, mode_counts.max() + 4)
 ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
 ax.tick_params(axis="x", colors=SOFT, length=0)
 ax.tick_params(axis="y", length=0)
@@ -198,7 +198,7 @@ ax.scatter(commute_by_mode["avg_commute"], list(ys),
            color=colors, s=180, zorder=2)
 
 for i, (col, (idx, row)) in enumerate(zip(colors, commute_by_mode.iterrows())):
-    ax.text(row["avg_commute"] + 2, i,
+    ax.text(row["avg_commute"] + 8, i,
             f"{row['avg_commute']:.0f} min  (n={int(row['n'])})",
             va="center", fontsize=10, color=col, fontweight="bold")
 
