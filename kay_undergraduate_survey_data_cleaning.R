@@ -160,9 +160,6 @@ didnt_vote_codes <- data.frame(reason=c(
   "The line was too long",
   "I did not commute to campus that day",
   "I voted during Early Voting",
-  "I do not feel strongly for politics/ voting",
-  "The line was too long",
-  "I did not commute to campus that day",
   "I do not feel strongly for politics/ voting"
 ))
 
