@@ -163,7 +163,6 @@ didnt_vote_codes <- data.frame(reason=c(
   "I do not feel strongly for politics/ voting",
   "The line was too long",
   "I did not commute to campus that day",
-  "I voted during Early Voting",
   "I do not feel strongly for politics/ voting"
 ))
 
@@ -204,9 +203,13 @@ read_csv("Q5_reason_didnt_vote_df")
 
 ################ Creating Clean CSV ##################################################3
 
+#filters for variables that are "civic engagement focus" (and the first few)
+
+
+
 # writing the newly cleaned dataset to another CSV file
 # my visualizations and analysis will be done using this csv and Q5_didnt_vote_df.csv
 
 
-write_csv(undergrad_survey, "cleaned_undergraduate_survey.csv")
+write_csv(undergrad_survey, "civic_engagement_cleaned_undergraduate_survey.csv")
 
