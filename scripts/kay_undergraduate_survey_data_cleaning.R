@@ -2,7 +2,9 @@
 
 library(readr)
 
-Undergraduate_Student_Life_Survey_April_23_2026 <- read_csv("../data/raw/Undergraduate_Student_Life_Survey_April 23-2026.csv")
+Undergraduate_Student_Life_Survey_April_23_2026 <- read_csv(
+  "data/raw/Undergraduate_Student_Life_Survey_April 23-2026.csv"
+)
 
 undergrad_survey <- Undergraduate_Student_Life_Survey_April_23_2026
 
