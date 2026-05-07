@@ -1,5 +1,6 @@
 # HON-3350-Final-Project
 
+
 **The Road to Campus: Commute Length and Civic Participation Among UH Undergraduates**
 
 A data portrait project examining whether commute burden affects civic engagement among University of Houston undergraduate students. Data collected via original survey, Spring 2026.
@@ -50,3 +51,4 @@ A data portrait project examining whether commute burden affects civic engagemen
 **`charts/chart4_commute_by_mode.png`** — Lollipop chart of average commute time by transport mode, with the mode's emoji at the tip of each line. Highlights that METRO Bus riders face the longest average commute (142 min).
 
 **`charts/chart_road_portrait.png`** — Final visualization. A road map where all 41 students enter as one trunk road, fork by residence (on/off-campus), then branch again via transport mode. Road width is proportional to number of respondents; road length is proportional to average commute time. Each mode has a distinct road style: train tracks for METRO Rail, green bike lane for Bicycle, red bus lane for METRO Bus, and standard asphalt roads with yellow dashes for Car and Carpool.
+
