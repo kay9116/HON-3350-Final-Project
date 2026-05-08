@@ -1,42 +1,42 @@
-Finished,ResponseId,Q1,Q2,Q3,Q3 ID,Q4,Q5,Q6,Q7,Q15,Q8_1,Q8_2,Q8_3,Q8_4,Q8_5,Q9,Q10,Q10 ID,Q10_7_TEXT,Q11,Q12,Q13,Q16
-TRUE,R_5zMV7VOGtlPnjdF,1,3,Engineering,5,0,I do not feel strongly for politics/ voting,0,0,0,1,3,7,7,2,1,,,,,,1.0,2.0
-TRUE,R_7P9vj0sMI44ySJz,1,2,Architecture,1,1,NA,0,0,0,1,5,7,5,1,1,,,,,,1.0,0.0
-TRUE,R_6mSAqNeJMvcdiq5,1,2,Buisness,3,0,I chose not to vote,0,0,0,1,1,7,7,1,1,,,,,,0.0,
-TRUE,R_5wxlVamdcV0L4Yh,1,2,"Art, Music, Dance, Theater",2,0,I voted during Early Voting,0,0,0,1,1,6,3,2,1,,,,,,1.0,0.0
-TRUE,R_7suW0fypVeWJt6E,1,3,Engineering,5,1,NA,0,1,0,1,4,7,1,4,1,,,,,,1.0,0.0
-TRUE,R_1s4rv8we7fsNJ74,1,3,Natural Sciences and Mathematics,7,0,I chose not to vote,0,0,0,1,1,7,5,4,1,,,,,,1.0,5.0
-TRUE,R_7RPQttfyM7EXE5K,1,2,Engineering,5,0,"I did not know the election was taking place,I did not commute to campus that day",0,0,0,1,4,7,3,3,0,Personal Car,1.0,,35.0,,,
-TRUE,R_1oAOC95pOmuyJaN,1,3,"Art, Music, Dance, Theater",2,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,3,4,7,4,5,1,,,,,,1.0,3.0
-TRUE,R_5m2lTvkxHIXiXKe,1,2,Engineering,5,0,"I chose not to vote,The line was too long",0,0,0,3,3,5,4,4,1,,,,,,0.0,
-TRUE,R_3mFa5wA1sV3wSMU,1,3,"Art, Music, Dance, Theater",2,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,3,6,7,4,3,1,,,,,,0.0,
-TRUE,R_3nSHwmm3ijAyALz,1,2,Buisness,3,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,1,2,7,3,1,0,Personal Car,1.0,,40.0,,,
-TRUE,R_5i4lGq5GuYZQMuk,1,4,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,1,1,1,5,7,7,3,5,0,Personal Car,1.0,,90.0,,,
-TRUE,R_1cdUrmGiGbFVxvg,1,1,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,0,1,0,5,5,6,4,2,1,,,,,,0.0,
-TRUE,R_5zuWkkqJ2a7wTDj,1,1,Engineering,5,1,NA,1,0,0,1,1,6,1,6,0,Personal Car,1.0,,3.0,,,
-TRUE,R_6wGJYD88BdQeiab,1,2,Liberal Arts and Social Sciences,6,0,I could not get transportation to the polling place,0,0,0,1,5,4,2,3,1,,,,,,0.0,
-TRUE,R_6itj7OooWpmIbaT,1,2,Engineering,5,0,I chose not to vote,0,0,0,1,1,2,1,1,0,Personal Car,1.0,,120.0,,,
-TRUE,R_3K2otILnCTpi6rz,1,4,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,0,0,0,1,3,2,3,5,0,METRO Bus,3.0,,180.0,1.0,,
-TRUE,R_7oYLzEbPa75EmQw,1,4,Public Policy,9,1,NA,1,1,0,5,7,7,4,5,0,Personal Car,1.0,,60.0,,,
-TRUE,R_71hL8Ba9kaOFhxU,1,3,Buisness,3,1,NA,0,0,0,5,6,6,6,4,0,METRO Bus,3.0,,240.0,3.0,,
-TRUE,R_57x7XQAVZrEm7kZ,1,1,Engineering,5,0,"I did not know the election was taking place,I did not commute to campus that day",0,0,0,1,1,6,3,1,0,Walking,6.0,,50.0,,,
-TRUE,R_67zUnxHzzf7zDSF,1,2,Public Policy,9,0,I did not know the election was taking place,0,0,0,1,1,1,1,1,0,METRO Bus,3.0,,5.0,5.0,,
-TRUE,R_6wUphoFNPC6UblL,1,3,Natural Sciences and Mathematics,7,0,The line was too long,0,0,1,1,3,7,1,4,0,Personal Car,1.0,,45.0,,,
-TRUE,R_73zLqK3TDcsBjRn,1,1,Buisness,3,NA,NA,0,0,0,2,2,6,5,2,1,,,,,,1.0,0.0
-TRUE,R_6rIEocg7Em1R2pz,1,1,"Art, Music, Dance, Theater",2,0,I did not know the election was taking place,0,0,0,1,1,6,1,1,0,Bicycle,5.0,,40.0,,,
-TRUE,R_52cLUSIoQogGzOV,1,3,Public Policy,9,1,NA,1,1,1,7,7,7,5,7,0,Personal Car,1.0,,40.0,,,
-TRUE,R_36f4Ds8kW5rjJH0,1,3,Liberal Arts and Social Sciences,6,1,NA,0,0,0,7,6,7,6,1,0,Carpool,2.0,,25.0,,,
-TRUE,R_124KvGPhla8W6kE,1,2,Engineering,5,1,NA,0,0,0,5,6,7,5,5,0,METRO Rail,4.0,,4.0,3.0,,
-TRUE,R_3dSDv6aShLRkJ2p,1,2,Engineering,5,0,I voted at a another polling location,0,0,0,2,1,7,6,1,1,,,,,,0.0,
-TRUE,R_60NiPKEDSiWOt1g,1,4,Natural Sciences and Mathematics,7,1,NA,0,0,0,1,4,6,5,1,0,Personal Car,1.0,,70.0,,,
-TRUE,R_7xE0pnZHhXuSRQ2,1,1,Nursing,8,1,NA,0,0,0,5,5,7,5,6,1,,,,,,0.0,
-TRUE,R_6FIJLbf2pqjRP6l,1,1,Engineering,5,1,NA,0,0,0,5,1,7,5,5,0,Personal Car,1.0,,45.0,,,
-TRUE,R_7iU5UT0Cwkdv04W,1,1,Liberal Arts and Social Sciences,6,1,NA,0,0,0,1,5,7,4,5,1,,,,,,1.0,3.0
-TRUE,R_5dpnZlHg7vlNc2l,1,1,Natural Sciences and Mathematics,7,0,I did not know the election was taking place,0,0,0,1,5,7,6,2,1,,,,,,0.0,
-TRUE,R_3WvzoFFWDF9PVpO,1,2,Natural Sciences and Mathematics,7,0,I voted at a another polling location,0,0,0,1,2,7,6,5,1,,,,,,1.0,0.0
-TRUE,R_3Mf6npt5Xg3dTfb,1,2,Engineering,5,1,NA,0,0,0,1,2,5,3,1,0,Carpool,2.0,,45.0,,,
-TRUE,R_61bnDQQaUFeRR2y,1,4,"Art, Music, Dance, Theater",2,0,I voted at a another polling location,0,0,1,1,7,7,3,4,1,,,,,,0.0,
-TRUE,R_6QnKtEntWeFITT5,1,1,Liberal Arts and Social Sciences,6,0,I do not feel strongly for politics/ voting,0,0,0,1,1,5,2,1,0,Personal Car,1.0,,50.0,,,
-TRUE,R_3I4UAhSnNAMST0B,1,2,Integrated Studies,10,0,I voted at a another polling location,0,0,1,1,5,6,5,5,0,Personal Car,1.0,,90.0,,,
-TRUE,R_7CBgSVIQEr7qaKU,1,3,"Art, Music, Dance, Theater",2,0,I did not know the election was taking place,0,0,0,1,4,7,3,5,1,,,,,,1.0,5.0
-TRUE,R_3ClkGFUVMMdHVH2,1,3,Education,4,0,I voted at a another polling location,0,0,0,1,1,6,3,2,1,,,,,,0.0,
-TRUE,R_7RjoEAXkbeEuWBz,1,3,Natural Sciences and Mathematics,7,0,I voted at a another polling location,0,0,0,3,4,5,5,3,0,Personal Car,1.0,,30.0,,,
+Finished,ResponseId,Q1,Q2,Q3,Q3 ID,Q4,Q5,Q6,Q7,Q15,Q8_1,Q8_2,Q8_3,Q8_4,Q8_5,Q8_index,Q9,Q10,Q10 ID,Q10_7_TEXT,Q11,Q12,Q13,Q16
+TRUE,R_5zMV7VOGtlPnjdF,1,3,Engineering,5,0,I do not feel strongly for politics/ voting,0,0,0,1,3,7,7,2,0.1660555668540838,1,,,,,,1.0,2.0
+TRUE,R_7P9vj0sMI44ySJz,1,2,Architecture,1,1,NA,0,0,0,1,5,7,5,1,0.05448339632720672,1,,,,,,1.0,0.0
+TRUE,R_6mSAqNeJMvcdiq5,1,2,Buisness,3,0,I chose not to vote,0,0,0,1,1,7,7,1,-0.2952370166829236,1,,,,,,0.0,
+TRUE,R_5wxlVamdcV0L4Yh,1,2,"Art, Music, Dance, Theater",2,0,I voted during Early Voting,0,0,0,1,1,6,3,2,-0.9141480745121424,1,,,,,,1.0,0.0
+TRUE,R_7suW0fypVeWJt6E,1,3,Engineering,5,1,NA,0,1,0,1,4,7,1,4,-0.25248500845289046,1,,,,,,1.0,0.0
+TRUE,R_1s4rv8we7fsNJ74,1,3,Natural Sciences and Mathematics,7,0,I chose not to vote,0,0,0,1,1,7,5,4,-0.15516350733602433,1,,,,,,1.0,5.0
+TRUE,R_7RPQttfyM7EXE5K,1,2,Engineering,5,0,"I did not know the election was taking place,I did not commute to campus that day",0,0,0,1,4,7,3,3,-0.10738321243547616,0,Personal Car,1.0,,35.0,,,
+TRUE,R_1oAOC95pOmuyJaN,1,3,"Art, Music, Dance, Theater",2,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,3,4,7,4,5,0.671455029304529,1,,,,,,1.0,3.0
+TRUE,R_5m2lTvkxHIXiXKe,1,2,Engineering,5,0,"I chose not to vote,The line was too long",0,0,0,3,3,5,4,4,-0.0027247150295198197,1,,,,,,0.0,
+TRUE,R_3mFa5wA1sV3wSMU,1,3,"Art, Music, Dance, Theater",2,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,3,6,7,4,3,0.7049846547950663,1,,,,,,0.0,
+TRUE,R_3nSHwmm3ijAyALz,1,2,Buisness,3,0,"I voted at a another polling location,I voted during Early Voting",0,0,0,1,2,7,3,1,-0.7112634486546405,0,Personal Car,1.0,,40.0,,,
+TRUE,R_5i4lGq5GuYZQMuk,1,4,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,1,1,1,5,7,7,3,5,1.355485913262926,0,Personal Car,1.0,,90.0,,,
+TRUE,R_1cdUrmGiGbFVxvg,1,1,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,0,1,0,5,5,6,4,2,0.5667429355991569,1,,,,,,0.0,
+TRUE,R_5zuWkkqJ2a7wTDj,1,1,Engineering,5,1,NA,1,0,0,1,1,6,1,6,-0.6314869124830864,0,Personal Car,1.0,,3.0,,,
+TRUE,R_6wGJYD88BdQeiab,1,2,Liberal Arts and Social Sciences,6,0,I could not get transportation to the polling place,0,0,0,1,5,4,2,3,-0.6502349106945364,1,,,,,,0.0,
+TRUE,R_6itj7OooWpmIbaT,1,2,Engineering,5,0,I chose not to vote,0,0,0,1,1,2,1,1,-2.0889044283428038,0,Personal Car,1.0,,120.0,,,
+TRUE,R_3K2otILnCTpi6rz,1,4,Liberal Arts and Social Sciences,6,0,I voted at a another polling location,0,0,0,1,3,2,3,5,-0.9121594380597549,0,METRO Bus,3.0,,180.0,1.0,,
+TRUE,R_7oYLzEbPa75EmQw,1,4,Public Policy,9,1,NA,1,1,0,5,7,7,4,5,1.4993306376127113,0,Personal Car,1.0,,60.0,,,
+TRUE,R_71hL8Ba9kaOFhxU,1,3,Buisness,3,1,NA,0,0,0,5,6,6,6,4,1.298960155090467,0,METRO Bus,3.0,,240.0,3.0,,
+TRUE,R_57x7XQAVZrEm7kZ,1,1,Engineering,5,0,"I did not know the election was taking place,I did not commute to campus that day",0,0,0,1,1,6,3,1,-1.0567357271942992,0,Walking,6.0,,50.0,,,
+TRUE,R_67zUnxHzzf7zDSF,1,2,Public Policy,9,0,I did not know the election was taking place,0,0,0,1,1,1,1,1,-2.275024241455037,0,METRO Bus,3.0,,5.0,5.0,,
+TRUE,R_6wUphoFNPC6UblL,1,3,Natural Sciences and Mathematics,7,0,The line was too long,0,0,1,1,3,7,1,4,-0.4118374738803159,0,Personal Car,1.0,,45.0,,,
+TRUE,R_73zLqK3TDcsBjRn,1,1,Buisness,3,NA,NA,0,0,0,2,2,6,5,2,-0.292197054372193,1,,,,,,1.0,0.0
+TRUE,R_6rIEocg7Em1R2pz,1,1,"Art, Music, Dance, Theater",2,0,I did not know the election was taking place,0,0,0,1,1,6,1,1,-1.3444251758938703,0,Bicycle,5.0,,40.0,,,
+TRUE,R_52cLUSIoQogGzOV,1,3,Public Policy,9,1,NA,1,1,1,7,7,7,5,7,2.2781688793527164,0,Personal Car,1.0,,40.0,,,
+TRUE,R_36f4Ds8kW5rjJH0,1,3,Liberal Arts and Social Sciences,6,1,NA,0,0,0,7,6,7,6,1,1.407135222182136,0,Carpool,2.0,,25.0,,,
+TRUE,R_124KvGPhla8W6kE,1,2,Engineering,5,1,NA,0,0,0,5,6,7,5,5,1.4838228965350715,0,METRO Rail,4.0,,4.0,3.0,,
+TRUE,R_3dSDv6aShLRkJ2p,1,2,Engineering,5,0,I voted at a another polling location,0,0,0,2,1,7,6,1,-0.2641726350197562,1,,,,,,0.0,
+TRUE,R_60NiPKEDSiWOt1g,1,4,Natural Sciences and Mathematics,7,1,NA,0,0,0,1,4,6,5,1,-0.290988882212452,0,Personal Car,1.0,,70.0,,,
+TRUE,R_7xE0pnZHhXuSRQ2,1,1,Nursing,8,1,NA,0,0,0,5,5,7,5,6,1.4670580837898028,1,,,,,,0.0,
+TRUE,R_6FIJLbf2pqjRP6l,1,1,Engineering,5,1,NA,0,0,0,5,1,7,5,5,0.6870605693979446,0,Personal Car,1.0,,45.0,,,
+TRUE,R_7iU5UT0Cwkdv04W,1,1,Liberal Arts and Social Sciences,6,1,NA,0,0,0,1,5,7,4,5,0.48098928270604824,1,,,,,,1.0,3.0
+TRUE,R_5dpnZlHg7vlNc2l,1,1,Natural Sciences and Mathematics,7,0,I did not know the election was taking place,0,0,0,1,5,7,6,2,0.3409157733591491,1,,,,,,0.0,
+TRUE,R_3WvzoFFWDF9PVpO,1,2,Natural Sciences and Mathematics,7,0,I voted at a another polling location,0,0,0,1,2,7,6,5,0.29062133512334326,1,,,,,,1.0,0.0
+TRUE,R_3Mf6npt5Xg3dTfb,1,2,Engineering,5,1,NA,0,0,0,1,2,5,3,1,-1.0835030748791072,0,Carpool,2.0,,45.0,,,
+TRUE,R_61bnDQQaUFeRR2y,1,4,"Art, Music, Dance, Theater",2,0,I voted at a another polling location,0,0,1,1,7,7,3,4,0.5132618365289567,1,,,,,,0.0,
+TRUE,R_6QnKtEntWeFITT5,1,1,Liberal Arts and Social Sciences,6,0,I do not feel strongly for politics/ voting,0,0,0,1,1,5,2,1,-1.386700264656318,0,Personal Car,1.0,,50.0,,,
+TRUE,R_3I4UAhSnNAMST0B,1,2,Integrated Studies,10,0,I voted at a another polling location,0,0,1,1,5,6,5,5,0.43871419394360045,0,Personal Car,1.0,,90.0,,,
+TRUE,R_7CBgSVIQEr7qaKU,1,3,"Art, Music, Dance, Theater",2,0,I did not know the election was taking place,0,0,0,1,4,7,3,5,0.17779209292883735,1,,,,,,1.0,5.0
+TRUE,R_3ClkGFUVMMdHVH2,1,3,Education,4,0,I voted at a another polling location,0,0,0,1,1,6,3,2,-0.9141480745121424,1,,,,,,0.0,
+TRUE,R_7RjoEAXkbeEuWBz,1,3,Natural Sciences and Mathematics,7,0,I voted at a another polling location,0,0,0,3,4,5,5,3,0.15788482206553434,0,Personal Car,1.0,,30.0,,,
