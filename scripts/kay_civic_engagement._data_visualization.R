@@ -208,25 +208,60 @@ ggplot(split_data, aes(x = "", y = percent, fill = group)) +
   theme_minimal()
 
 
-# ***********************************************************************************************************
+
 
 
 
 ############## Q8 Matrix  ################################################
 
 
-summary(undergrad_survey$Q8_5)
+# creating an index from Q8.1-5 to create a civic engagement score for students
+
+install.packages("psych")
+
+library(psych)
+
+
+# Subsetting the the dataset
+Q8_index_df <- undergrad_survey[, c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5")]
+
+# Run PCA
+pca_result <- principal(
+  Q8_index_df,
+  nfactors = 5,
+  rotate = "none"
+)
+
+# View full output
+pca_result
 
 
 
+pca_result$loadings
+pca_result$Vaccounted
+
+pca_scores <- pca_result$scores
+head(pca_scores)
+
+fa.parallel(Q8_index_df, fm = "pc")
 
 
+# results indicate each person should get one score
+
+pca_result <- principal(Q8_index_df, nfactors = 1, rotate = "none")
+
+pca_result
+
+scree(Q8_index_df, factors = FALSE)
 
 
+#creates the actual index
 
+Q8_index_df$Q8_index <- pca_result$scores[,1]
 
+hist(Q8_index_df$Q8_index)
 
-
+# ***********************************************************************************************************
 
 
 
