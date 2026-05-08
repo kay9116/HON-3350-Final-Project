@@ -8,8 +8,10 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import numpy as np
 from collections import Counter
+from pathlib import Path
 
-df = pd.read_csv("../data/cleaned/cleaned_transportation_survey.csv")
+ROOT = Path(__file__).parent.parent
+df = pd.read_csv(ROOT / "data/cleaned/cleaned_transportation_survey.csv")
 
 # ── Portrait theme ────────────────────────────────────────────────────────────
 
@@ -49,7 +51,7 @@ SOURCE = "Source: UH Undergraduate Student Life Survey, Spring 2026"
 
 
 def save(name):
-    plt.savefig(f"../charts/{name}", bbox_inches="tight", facecolor=BG)
+    plt.savefig(ROOT / "charts" / name, bbox_inches="tight", facecolor=BG)
     plt.close()
     print(f"Saved charts/{name}")
 
