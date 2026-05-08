@@ -6,8 +6,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
 
-df = pd.read_csv("../data/cleaned/cleaned_transportation_survey.csv")
+ROOT = Path(__file__).parent.parent
+df = pd.read_csv(ROOT / "data/cleaned/cleaned_transportation_survey.csv")
 
 # ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -247,7 +249,7 @@ ax.text(11, 0.22,
         f"n = {n_all}  ·  Source: UH Undergraduate Student Life Survey, Spring 2026",
         fontsize=8.5, color=SOFT, ha="center", style="italic")
 
-plt.savefig("../charts/chart_road_portrait.png", bbox_inches="tight",
+plt.savefig(ROOT / "charts/chart_road_portrait.png", bbox_inches="tight",
             facecolor=BG, dpi=150)
 plt.close()
 print("Saved charts/chart_road_portrait.png")
