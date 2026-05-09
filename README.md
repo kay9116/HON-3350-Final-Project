@@ -55,7 +55,6 @@ A data portrait project examining whether commute burden affects civic engagemen
 ---
 
 ## Civic Engagement (Kaylee Gallardo)
-- 
 
 ### Data Cleaning
 - Filtered to confirmed undergraduates (Q1 = "Yes") with complete responses, and removed respondents whose Finished = "False"
