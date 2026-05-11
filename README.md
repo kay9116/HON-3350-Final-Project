@@ -78,4 +78,4 @@ A data portrait project examining whether commute burden affects civic engagemen
 
 **`charts/Q5&4_barplot.png`** Split bar graph that adds individuals who chose either reason 2 or 7 to see the proportion of respondents that voted whether on campus or not
 
----
+--- 
