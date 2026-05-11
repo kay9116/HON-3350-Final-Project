@@ -32,20 +32,24 @@ OUT_PATH = ROOT / "charts" / "portrait_constellations.png"
 df = pd.read_csv(DATA_PATH)
 df = df[df["Q8_index"].notna()].reset_index(drop=True)
 
-# Major color palette — picked to be distinct on a dark navy background
+# Major color palette — 10 distinct hues, well-separated on a dark navy sky
 PALETTE = {
-    "Engineering":                       "#FFD86B",  # gold
-    "Liberal Arts and Social Sciences":  "#9FC8FF",  # sky blue
-    "Art, Music, Dance, Theater":        "#FF9FB5",  # pink
-    "Natural Sciences and Mathematics":  "#7DE2A8",  # mint
-    "Buisness":                          "#FFB36B",  # orange  (note: spelled as in source data)
-    "Public Policy":                     "#C297FF",  # purple
-    "Architecture":                      "#A8E6F0",  # cyan
-    "Nursing":                           "#F8E6A0",  # cream
-    "Integrated Studies":                "#E8E8E8",  # silver
-    "Education":                         "#FF7F7F",  # coral
+    "Engineering":                       "#FFCD3C",  # gold
+    "Liberal Arts and Social Sciences":  "#6FB6FF",  # sky blue
+    "Art, Music, Dance, Theater":        "#FF8AB5",  # pink
+    "Natural Sciences and Mathematics":  "#4ED98D",  # emerald
+    "Buisness":                          "#FF9540",  # orange  (kept misspelled as in source)
+    "Public Policy":                     "#BC8FFF",  # lavender
+    "Architecture":                      "#3DCFD6",  # teal
+    "Nursing":                           "#FF6868",  # light red
+    "Integrated Studies":                "#FFCBA8",  # peach
+    "Education":                         "#E84DD3",  # magenta
 }
 MAJOR_ORDER = df["Q3"].value_counts().index.tolist()
+
+# Pretty-print "Buisness" → "Business" in legend without touching source data
+def display_major(name: str) -> str:
+    return name.replace("Buisness", "Business")
 
 # Year → star core size (1st years small, 4th years dramatically larger)
 YEAR_SIZE = {1: 60, 2: 150, 3: 270, 4: 410}
@@ -160,37 +164,60 @@ def draw_diffraction_spikes(ax, x: float, y: float, color: str,
 
 
 def draw_star(ax, x, y, color, voted, year):
-    """Draw a single star with halo, core, and (if voter) spikes + hot core."""
+    """Draw a single star with halo, core, and (if voter) spikes + hot core
+    + a faint warm-gold outer ring that visually marks voters."""
     base = YEAR_SIZE[year]
     b = brightness(voted)
+    is_voter = (voted == 1.0)
+
     draw_diffraction_spikes(ax, x, y, color, b, base)
+
+    # Voter-only outer ring: warm gold halo that clearly distinguishes voters
+    if is_voter:
+        ax.scatter(x, y, s=base * 9.0, color="#FFE8A8", alpha=0.07,
+                   zorder=2, edgecolors="none")
+        ax.scatter(x, y, s=base * 4.5, color="#FFE8A8", alpha=0.14,
+                   zorder=3, edgecolors="none")
+
+    # Standard color halo (major color)
     ax.scatter(x, y, s=base * 6.0, color=color, alpha=0.10 * b,
                zorder=3, edgecolors="none")
     ax.scatter(x, y, s=base * 3.0, color=color, alpha=0.20 * b,
                zorder=4, edgecolors="none")
+
+    # Core disk
     ax.scatter(x, y, s=base, color=color,
                alpha=0.30 + 0.70 * b, zorder=5,
                edgecolors="white", linewidths=0.4 + 0.5 * b)
+
+    # Hot white core for voters
     if b > 0.65:
-        ax.scatter(x, y, s=base * 0.30, color="white",
-                   alpha=(b - 0.65) * 2.5, zorder=6, edgecolors="none")
+        ax.scatter(x, y, s=base * 0.40, color="white",
+                   alpha=(b - 0.65) * 2.8, zorder=6, edgecolors="none")
 
 # ─── Figure ────────────────────────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(16, 9.5))
 fig.patch.set_facecolor("#0B0E2A")
 ax.set_facecolor("#0B0E2A")
 
-# Decorative background stars
-bg_x = rng.uniform(0.4, SKY_X_MAX + 0.2, 320)
-bg_y = rng.uniform(-Y_RANGE / 2 - 0.4, Y_RANGE / 2 + 0.4, 320)
-bg_s = rng.uniform(0.8, 5, 320)
-ax.scatter(bg_x, bg_y, s=bg_s, color="white", alpha=0.15, zorder=1)
+# Decorative background stars — all small, uniformly dim.
+# Density tapers toward the edges (galactic-plane feel) using a triangular dist.
+bg_n = 380
+bg_x = rng.uniform(0.4, SKY_X_MAX + 0.2, bg_n)
+bg_y = rng.triangular(-Y_RANGE / 2 - 0.4, 0, Y_RANGE / 2 + 0.4, bg_n)
+bg_s = rng.uniform(0.4, 1.8, bg_n)
+ax.scatter(bg_x, bg_y, s=bg_s, color="white", alpha=0.12, zorder=1)
 
-# Average-engagement reference line at y = 0
-ax.axhline(0, color="#3A4884", linewidth=0.7, alpha=0.55, zorder=0.6,
-           linestyle=(0, (4, 4)))
-ax.text(SKY_X_MAX + 0.05, 0.05, "average engagement", color="#566196",
-        fontsize=8.2, va="bottom", ha="right",
+# Average-engagement reference line at y = 0 — clipped to the sky area so it
+# doesn't bleed into the legend column. Soft white glow + a muted white dash.
+HORIZON_X0, HORIZON_X1 = 0.18, SKY_X_MAX + 0.10
+ax.plot([HORIZON_X0, HORIZON_X1], [0, 0], color="white",
+        linewidth=4.0, alpha=0.08, zorder=0.55, solid_capstyle="round")
+ax.plot([HORIZON_X0, HORIZON_X1], [0, 0], color="#D6DDEF",
+        linewidth=1.2, alpha=0.70, zorder=0.6,
+        linestyle=(0, (6, 4)))
+ax.text(HORIZON_X1, 0.15, "average engagement",
+        color="#D6DDEF", fontsize=9, va="bottom", ha="right",
         family="serif", fontstyle="italic", alpha=0.85)
 
 # Y gridlines (engagement score)
@@ -233,7 +260,7 @@ for _, r in pdf.sort_values("year").iterrows():
 
 # ─── Title block ───────────────────────────────────────────────────────
 title_x = (0.6 + SKY_X_MAX) / 2
-ax.text(title_x, Y_RANGE / 2 + 1.15, "CONSTELLATIONS OF CIVIC LIFE",
+ax.text(title_x, Y_RANGE / 2 + 1.15, "CONSTELLATIONS OF THE CIVIC COMMUTE",
         ha="center", color="white", fontsize=24,
         family="serif", fontweight="bold")
 ax.text(title_x, Y_RANGE / 2 + 0.65,
@@ -244,10 +271,10 @@ ax.text(title_x, Y_RANGE / 2 + 0.65,
 
 # ─── Axis labels ───────────────────────────────────────────────────────
 ax.text(title_x, -Y_RANGE / 2 - 0.95,
-        "COMMUTE TIME  (one-way, in minutes)",
+        "COMMUTE TIME  (in minutes)",
         color="#9FAACE", fontsize=9.8, ha="center", va="top",
         family="serif", fontweight="bold")
-ax.text(0.20, Y_RANGE / 2 + 0.45, "CIVIC ENGAGEMENT  (Q8 PCA index)",
+ax.text(0.20, Y_RANGE / 2 + 0.45, "CIVIC ENGAGEMENT  (PCA index)",
         color="#9FAACE", fontsize=9.8, ha="left", va="bottom",
         family="serif", fontweight="bold")
 
@@ -263,7 +290,8 @@ for i, major in enumerate(MAJOR_ORDER):
     ax.scatter(LX + 0.10, yy, s=160, color=color, alpha=0.28, edgecolors="none")
     ax.scatter(LX + 0.10, yy, s=80, color=color, alpha=0.95,
                edgecolors="white", linewidths=0.4)
-    label = (major if len(major) < 34 else major[:32] + "…") + f"  · n={n}"
+    pretty = display_major(major)
+    label = (pretty if len(pretty) < 34 else pretty[:32] + "…") + f"  · n={n}"
     ax.text(LX + 0.40, yy, label, color="white", fontsize=8.6,
             va="center", family="serif")
 
@@ -307,12 +335,11 @@ for i, (b_val, lbl) in enumerate([(0.95, "voted"), (0.18, "did not vote")]):
     ax.text(xx, yy - 0.45, lbl, color="#9FAACE", fontsize=8.4,
             ha="center", family="serif", fontstyle="italic")
 
-# ─── Footer ────────────────────────────────────────────────────────────
+# ─── Source line ───────────────────────────────────────────────────────
 ax.text(title_x, -Y_RANGE / 2 - 1.55,
-        "Height shows what students say — brightness shows what they did. "
-        "Bright stars rise above the average line; the commute does not pull them down.",
-        ha="center", color="#7B8AC9", fontsize=10,
-        family="serif", fontstyle="italic", alpha=0.95)
+        f"n = {len(pdf)}  |  Source: UH Undergraduate Student Life Survey, Spring 2026",
+        ha="center", color="#7B8AC9", fontsize=8.8,
+        family="serif", fontstyle="italic", alpha=0.85)
 
 # ─── Frame ─────────────────────────────────────────────────────────────
 ax.set_xlim(-0.05, 15.5)
