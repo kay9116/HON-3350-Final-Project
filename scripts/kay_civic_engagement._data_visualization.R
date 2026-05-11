@@ -8,9 +8,6 @@ library(ggplot2)
 library(dplyr)
 
 
-install.packages('ggimage')
-library(ggimage)
-
 
 ########### Q2 & 3 ##########################
 
@@ -308,12 +305,6 @@ ggplot(Q8_index_df, aes(x = Q8_index)) +
 # ***********************************************************************************************************
 
 write_csv(Q8_index_df, "Q8_Index.csv")
-
-
-
-
-
-
 
 
 
