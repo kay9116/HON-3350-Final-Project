@@ -111,27 +111,6 @@ ggplot(Q5_plot_data, aes(x = Q5, y = percent)) +
   theme_minimal()
 
 
-ggplot(Q4_plot_data, aes(x = "All Students", y = percent, fill = voted)) +
-  geom_col(width = 0.5) +
-  geom_text(
-    aes(label = paste0(round(percent, 1), "%")),
-    position = position_stack(vjust = 0.75),
-    color = "white",
-    size = 3
-  ) +
-  scale_fill_manual(values = c(
-    "Voted" = "firebrick",
-    "Did Not Vote" = "gray70"
-  )) +
-  labs(
-    title = "Majority of Students do not Vote on Campus for Elections",
-    subtitle = " Only 32.5% of respondants surveyed reported voting on campus for the March Primaries",
-    x = NULL,
-    y = "Percentage",
-    fill = "Response"
-  ) +
-  theme_minimal()+
-  coord_flip()
 
 ############# Q5 and Q4  #########
 
@@ -224,7 +203,7 @@ ggplot(split_data, aes(x = "", y = percent, fill = group)) +
 install.packages("psych")
 
 library(psych)
-
+library(ggplot2)
 
 # Subsetting the the dataset
 Q8_index_df <- combined_cleaned[, c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5")]
@@ -233,37 +212,98 @@ Q8_index_df <- combined_cleaned[, c("Q8_1", "Q8_2", "Q8_3", "Q8_4","Q8_5")]
 pca_result <- principal(
   Q8_index_df,
   nfactors = 5,
-  rotate = "none"
+  rotate = "none",
+  scores = TRUE
 )
 
 # View full output
 pca_result
 
 
+## complies the info from pca_result into a nice table
 
-pca_result$loadings
-pca_result$Vaccounted
+install.packages("gt")
+library(gt)
+library(tibble)
 
-pca_scores <- pca_result$scores
-head(pca_scores)
+pca_table <- as.data.frame(unclass(pca_result$loadings)) %>%
+  round(2) %>%
+  rownames_to_column("Variable")
 
-fa.parallel(Q8_index_df, fm = "pc")
+pca_table %>%
+  gt() %>%
+  tab_header(
+    title = "Principal Component Loadings"
+  )
+
+## creates a variance table
+
+variance_table <- data.frame(
+  Metric = c("SS Loadings", "Proportion Variance", "Cumulative Variance"),
+  PC1 = c(
+    pca_result$Vaccounted["SS loadings", 1],
+    pca_result$Vaccounted["Proportion Var", 1],
+    pca_result$Vaccounted["Cumulative Var", 1]
+  ),
+  PC2 = c(
+    pca_result$Vaccounted["SS loadings", 2],
+    pca_result$Vaccounted["Proportion Var", 2],
+    pca_result$Vaccounted["Cumulative Var", 2]
+  ),
+  PC3 = c(
+    pca_result$Vaccounted["SS loadings", 3],
+    pca_result$Vaccounted["Proportion Var", 3],
+    pca_result$Vaccounted["Cumulative Var", 3]
+  ),
+  PC4 = c(
+    pca_result$Vaccounted["SS loadings", 4],
+    pca_result$Vaccounted["Proportion Var", 4],
+    pca_result$Vaccounted["Cumulative Var", 4]
+  ),
+  PC5 = c(
+    pca_result$Vaccounted["SS loadings", 5],
+    pca_result$Vaccounted["Proportion Var", 5],
+    pca_result$Vaccounted["Cumulative Var", 5]
+  )
+  
+)
+
+## rounds the values in the variance table to the nearest thousandth
+variance_table <- variance_table %>%
+  mutate(across(where(is.numeric), ~ round(.x, 3)))
+
+# creates the table
+variance_table %>%
+  gt() %>%
+  tab_header(
+    title = "PCA Variance Explained"
+  )
 
 
 # results indicate each person should get one score
-
 pca_result <- principal(Q8_index_df, nfactors = 1, rotate = "none")
 
-pca_result
-
 scree(Q8_index_df, factors = FALSE)
+
+# opens the plot generated in a seperate window
+windows()
+fa.parallel(Q8_index_df, fa = "pc") #creates a scree plot
 
 
 #creates the actual index
 
 Q8_index_df$Q8_index <- pca_result$scores[,1]
 
+
+# creates histogram of scores
 hist(Q8_index_df$Q8_index)
+
+ggplot(Q8_index_df, aes(x = Q8_index)) +
+  geom_histogram(binwidth= .5, fill = "steelblue", color = "white") +
+  theme_minimal()+
+  labs(title = "Q8 Civic Engagement Score Distribution",
+       x = " Civic Engagement Score",
+       y = "Frequency")
 
 # ***********************************************************************************************************
 
