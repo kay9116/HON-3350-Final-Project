@@ -308,10 +308,51 @@ write_csv(Q8_index_df, "Q8_Index.csv")
 
 
 
+########### Q6, 7, and 15 ###############################
 
 
+# creates a df contaning each yes no response
+
+library(tidyverse)
+
+Q6_7__15_data <- combined_cleaned %>%
+  select(Q6, Q7, Q15) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "Question",
+    values_to = "Response"
+  )
+
+Q6_7__15_plot_data <- Q6_7__15_data %>%
+  count(Question, Response) %>%
+  group_by(Question) %>%
+  mutate(percent = n / sum(n))
 
 
+Q_6_7_15_bar_plots<-ggplot(Q6_7__15_plot_data, aes(x = Question, y = percent, fill = factor(Response))) +
+  geom_col() +
+  geom_text(
+    aes(label = scales::percent(percent, accuracy = 1)),
+    position = position_stack(vjust = 0.5)
+  ) +
+  coord_flip() +
+  scale_fill_manual(
+    values = c("0" = "darkgrey", "1" = "firebrick"),
+    labels = c("0" = "No", "1" = "Yes")
+  ) +
+  scale_x_discrete(labels = c(
+    Q6 = "Attended a university town hall?",
+    Q7 = "Protested on campus?",
+    Q15 = "Left campus to attend a protest?"
+  )) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal() +
+  labs(
+    title = "Since the start of the 2025–2026 school year, have you...",
+    x = NULL,
+    y = "Percent",
+    fill = "Response"
+  )
 
 
 
